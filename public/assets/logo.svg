@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320" height="72" viewBox="0 0 320 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Golden Trees Caterers Logo</title>
+  <desc id="desc">Simple wordmark with emblem for Golden Trees Caterers</desc>
+  <rect x="0.5" y="0.5" width="319" height="71" rx="12" fill="#002a08" stroke="#0b5e04"/>
+  <g transform="translate(16,12)">
+    <g transform="translate(0,0)">
+      <circle cx="24" cy="24" r="24" fill="#0b5e04" stroke="#10ff93" stroke-width="1.5"/>
+      <path d="M24 10c4.5 6 7 10 7 14 0 5-3.5 9-7 12-3.5-3-7-7-7-12 0-4 2.5-8 7-14z" fill="#f6bb1d"/>
+      <path d="M21.5 28c1.6-1.2 3.1-2.6 4.3-4.2M24 18c0 3.8-2.6 7.3-6.5 9.8" stroke="#ffde36" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(64,6)">
+      <text x="0" y="24" fill="#f6bb1d" font-family="'Playfair Display', serif" font-size="24" font-weight="900" letter-spacing="1">GOLDEN TREES</text>
+      <text x="0" y="46" fill="#10ff93" font-family="'Lora', serif" font-size="14" font-weight="600" letter-spacing="2">CATERERS</text>
+    </g>
+  </g>
+</svg>
