@@ -1,28 +1,29 @@
 import React, { useState, useEffect, useRef } from "react"
+import reels from "./data/reels.json"
 
 const LOGO_SRC = "/assets/gtc-logo.png"
 
 const heroSlides = [
   {
-    image: "https://picsum.photos/1920/1080?random=1",
+    image: "/assets/slider-images/1.jpg",
     heading: "Where Taste Meets Elegance",
     subheading:
       "Golden Trees Caterers stands for class, comfort, and care—every dish prepared with perfection, every setup arranged with heart.",
   },
   {
-    image: "https://picsum.photos/1920/1080?random=2",
+    image: "/assets/slider-images/2.jpg",
     heading: "Serving Karachi with Heart Since 1992",
     subheading:
       "Over 30 years, countless celebrations, one promise: unforgettable taste and hospitality that feels like home yet shines with class.",
   },
   {
-    image: "https://picsum.photos/1920/1080?random=3",
+    image: "/assets/slider-images/3.jpg",
     heading: "From Overseas to Karachi, We Host for You",
     subheading:
       "Wherever you are in the world, your loved ones can still feel your presence. Golden Trees Caterers turns your plans into warm, real celebrations back home.",
   },
   {
-    image: "https://picsum.photos/1920/1080?random=4",
+    image: "/assets/slider-images/4.jpg",
     heading: "Karachi's Taste of Celebration",
     subheading:
       "We don't just cater food; we curate emotions, creating the kind of moments people talk about long after the lights go out.",
@@ -31,25 +32,25 @@ const heroSlides = [
 
 const services = [
   {
-    icon: "💍",
+    image: "/assets/services/wedding-catering.jpg",
     title: "Wedding and Reception Catering",
     description:
       "Your special day deserves nothing less than perfection. From elegant décor to exquisite multi-course meals, we design your wedding experience around your personality and preferences.",
   },
   {
-    icon: "🎉",
+    image: "/assets/services/private-celebration.jpg",
     title: "Private Gatherings and Family Celebrations",
     description:
       "We know the joy of celebrating at home with the people who matter most. Our team manages everything from décor to cleanup, giving you time to focus on your guests while we handle the rest.",
   },
   {
-    icon: "💼",
+    image: "/assets/services/Corporate-Event-Catering.webp",
     title: "Corporate Events and Business Dinners",
     description:
       "We bring professionalism and refinement to the corporate table. Whether it's a product launch, annual dinner, or client gathering, we help you create an atmosphere that speaks of confidence and success.",
   },
   {
-    icon: "🔥",
+    image: "/assets/services/outdoor-bbq.jpg",
     title: "Outdoor BBQs and Seasonal Parties",
     description:
       "Experience the charm of open-air dining with our exclusive BBQ setups and themed outdoor events. Our arrangements are perfect for creating a relaxed, yet sophisticated environment.",
@@ -112,7 +113,7 @@ const eventTypes = [
 const menuTypes = ["Dinner", "Lunch", "Hi-Tea", "BBQ", "Buffet", "Custom Menu"]
 
 const additionalServices = [
-  "Décor",
+  "Decor",
   "Lighting",
   "Photography",
   "Live BBQ Setup",
@@ -363,7 +364,7 @@ const Hero: React.FC = () => {
             backgroundPosition: "center",
           }}
         >
-          <div className='absolute inset-0 gradient-overlay'></div>
+          <div className='absolute inset-0 gradient-overlay opacity-90'></div>
         </div>
       ))}
       <div className='relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4'>
@@ -379,12 +380,18 @@ const Hero: React.FC = () => {
             >
               {index === currentSlide && (
                 <>
-                  <h1 className='text-4xl md:text-7xl font-extrabold font-boston-angel mb-6 text-shadow-gold leading-[1.3] pb-2 animate-fadeInUp gradient-text'>
+                  <h1 className='text-4xl md:text-7xl font-extrabold mb-6 text-shadow-gold leading-[1.4] pb-2 animate-fadeInUp gradient-text banner-headings'>
                     {slide.heading}
                   </h1>
-                  <p className='text-xl md:text-3xl font-lora text-shadow-lg text-gray-100 animate-fadeIn max-w-4xl mx-auto'>
+                  <p className='text-xl md:text-2xl font-lora text-shadow-lg text-gray-100 animate-fadeIn max-w-4xl mx-auto'>
                     {slide.subheading}
                   </p>
+                  <a
+                    href='#booking'
+                    className='bg-gradient-gold text-[#f6bb1d] font-extrabold py-3 px-8 rounded-full shadow-gold hover:shadow-premium transition-all duration-300 transform hover:scale-105 animate-scaleIn border-2 border-[#f6bb1d] mt-8 inline-block'
+                  >
+                    Book Now
+                  </a>
                 </>
               )}
             </div>
@@ -419,7 +426,7 @@ const About: React.FC = () => (
           <p className='text-2xl font-lora text-[#f6bb1d] mb-8 text-shadow-gold'>
             Serving Karachi with excellence over 30 years
           </p>
-          <div className='space-y-6 text-gray-200 text-justify text-lg leading-relaxed'>
+          <div className='space-y-6 text-gray-200 text-left text-lg leading-relaxed'>
             <p className='animate-fadeInUp'>
               Since 1992, Golden Trees Caterers has been a trusted name in
               Pakistan's hospitality industry serving excellence, flavor, and
@@ -446,7 +453,7 @@ const About: React.FC = () => (
         <div className='animate-slideInRight'>
           <div className='relative border-gradient rounded-2xl overflow-hidden'>
             <img
-              src='https://picsum.photos/600/700?random=5'
+              src='assets/gallery-images/about-catering-setup.jpg'
               alt='Elegant catering setup'
               className='rounded-2xl shadow-premium w-full h-full object-cover transform hover:scale-105 transition-transform duration-700'
             />
@@ -532,16 +539,18 @@ const Services: React.FC = () => (
         lies in combining professional organization with artistic presentation,
         making every event feel effortless and polished.
       </p>
-      <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-10'>
+      <div className='grid md:grid-cols-2 lg:grid-cols-2 gap-10'>
         {services.map((service, idx) => (
           <div
             key={service.title}
             className='bg-gradient-to-br from-[#003515] to-[#001a08] p-8 rounded-2xl shadow-gold text-left hover-lift animate-scaleIn border-2 border-[#f6bb1d]/30 hover:border-[#f6bb1d] group transition-all duration-300'
             style={{ animationDelay: `${0.1 * idx}s` }}
           >
-            <div className='text-6xl mb-6 transition-transform duration-300 group-hover:scale-125'>
-              {service.icon}
-            </div>
+            <img
+              src={service.image}
+              alt={service.title}
+              className='w-full h-48 object-cover rounded-lg mb-6 transition-transform duration-300 group-hover:scale-105'
+            />
             <h3 className='text-xl font-bold gradient-text mb-4 leading-[1.3] md:leading-[38.3px] pb-1'>
               {service.title}
             </h3>
@@ -586,14 +595,35 @@ const WhyChooseUs: React.FC = () => (
 )
 
 const Gallery: React.FC = () => {
-  const galleryImages = Array.from(
-    { length: 9 },
-    (_, i) => `https://picsum.photos/400/300?random=${10 + i}`,
-  )
-  const reels = Array.from(
-    { length: 6 },
-    (_, i) => `https://picsum.photos/300/500?random=${20 + i}`,
-  )
+  const galleryImages = [
+    "/assets/gallery-images/1.jpg",
+    "/assets/gallery-images/2.jpg",
+    "/assets/gallery-images/3.jpg",
+    "/assets/gallery-images/4.jpg",
+    "/assets/gallery-images/5.jpg",
+    "/assets/gallery-images/6.jpg",
+    "/assets/gallery-images/8.jpg",
+    "/assets/gallery-images/9.jpg",
+    "/assets/gallery-images/10.jpg",
+    "/assets/gallery-images/11.jpg",
+    "/assets/gallery-images/12.jpg",
+    "/assets/gallery-images/13.jpg",
+    "/assets/gallery-images/14.jpg",
+    "/assets/gallery-images/15.jpg",
+    "/assets/gallery-images/16.jpg",
+    "/assets/gallery-images/17.jpg",
+    "/assets/gallery-images/18.jpg",
+    "/assets/gallery-images/19.jpg",
+  ]
+
+  useEffect(() => {
+    if (!document.querySelector('script[src="//www.instagram.com/embed.js"]')) {
+      const script = document.createElement("script")
+      script.src = "//www.instagram.com/embed.js"
+      script.async = true
+      document.body.appendChild(script)
+    }
+  }, [])
 
   return (
     <section id='gallery' className='py-24 gradient-green-dark'>
@@ -619,34 +649,6 @@ const Gallery: React.FC = () => {
         <h3 className='text-2xl md:text-4xl font-bold text-white mb-10 gradient-text animate-fadeInUp leading-[1.3] md:leading-[52px] pb-2'>
           Event Reels
         </h3>
-        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6'>
-          {reels.map((src, index) => (
-            <div
-              key={index}
-              className='relative overflow-hidden rounded-2xl shadow-premium group animate-scaleIn border-gradient'
-              style={{ animationDelay: `${0.1 * index}s` }}
-            >
-              <img
-                src={src}
-                alt={`Reel ${index + 1}`}
-                className='w-full h-full object-cover'
-              />
-              <div className='absolute inset-0 gradient-overlay flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500'>
-                <svg
-                  className='w-20 h-20 text-[#f6bb1d] transform group-hover:scale-125 transition-transform duration-300'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )
