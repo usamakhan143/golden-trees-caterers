@@ -312,16 +312,18 @@ const Header: React.FC = () => {
             className='h-16 md:h-24 transition-all duration-300'
           />
           <nav className='hidden md:flex space-x-8'>
-            {["Home", "About", "Services", "Gallery", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className='relative text-white hover:text-[#f6bb1d] transition-colors duration-300 font-lora text-lg group'
-              >
-                {item}
-                <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full'></span>
-              </a>
-            ))}
+            {["Home", "About", "Services", "Gallery", "FAQs", "Contact"].map(
+              (item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className='relative text-white hover:text-[#f6bb1d] transition-colors duration-300 font-lora text-lg group'
+                >
+                  {item}
+                  <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full'></span>
+                </a>
+              ),
+            )}
           </nav>
           <a
             href='#booking'
@@ -423,6 +425,11 @@ const About: React.FC = () => (
           <h2 className='text-3xl md:text-5xl font-bold gradient-text mb-6 leading-[1.3] md:leading-[78px] pb-2'>
             About Golden Trees Caterers
           </h2>
+          <img
+            src='/assets/elegant-design.svg'
+            alt='elegant design'
+            className='mt-4 e-design'
+          />
           <p className='text-2xl font-lora text-[#f6bb1d] mb-8 text-shadow-gold'>
             Serving Karachi with excellence over 30 years
           </p>
@@ -480,6 +487,11 @@ const OverseasClients: React.FC = () => (
       <h2 className='text-3xl md:text-5xl font-bold text-white my-6 gradient-text animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
         Celebrate in Karachi, even when you're miles away.
       </h2>
+      <img
+        src='/assets/elegant-design.svg'
+        alt='elegant design'
+        className='mx-auto mt-4 e-design-center'
+      />
       <div
         className='max-w-4xl mx-auto text-gray-300 text-lg mb-12 animate-fadeIn'
         style={{ animationDelay: "0.2s" }}
@@ -509,7 +521,7 @@ const OverseasClients: React.FC = () => (
         className='mt-16 animate-fadeInUp'
         style={{ animationDelay: "0.4s" }}
       >
-        <h4 className='text-2xl md:text-3xl font-bold gradient-text mb-8 leading-[1.3] pb-2'>
+        <h4 className='text-2xl md:text-3xl font-bold gradient-text mb-8 leading-[1.3] pb-5'>
           We manage it all:
         </h4>
         <div className='flex flex-wrap justify-center gap-4 text-sm'>
@@ -534,6 +546,11 @@ const Services: React.FC = () => (
       <h2 className='text-3xl md:text-5xl font-bold gradient-text mb-6 animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
         Services We Offer
       </h2>
+      <img
+        src='/assets/elegant-design.svg'
+        alt='elegant design'
+        className='mx-auto mt-4 e-design-center'
+      />
       <p className='max-w-4xl mx-auto text-gray-200 text-lg mb-16 animate-fadeIn'>
         We offer full-service catering for all kinds of occasions. Our expertise
         lies in combining professional organization with artistic presentation,
@@ -570,6 +587,11 @@ const WhyChooseUs: React.FC = () => (
       <h2 className='text-3xl md:text-5xl font-bold text-white mb-6 gradient-text animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
         Why Choose Golden Trees Caterers
       </h2>
+      <img
+        src='/assets/elegant-design.svg'
+        alt='elegant design'
+        className='mx-auto mt-4 e-design-center'
+      />
       <p className='max-w-4xl mx-auto text-gray-300 text-lg mb-16 animate-fadeIn'>
         Golden Trees Caterers is not built on marketing words, but on trust and
         reputation. We have earned our name by delivering consistency, elegance,
@@ -593,7 +615,6 @@ const WhyChooseUs: React.FC = () => (
     </div>
   </section>
 )
-
 const Gallery: React.FC = () => {
   const galleryImages = [
     "/assets/gallery-images/1.jpg",
@@ -628,9 +649,14 @@ const Gallery: React.FC = () => {
   return (
     <section id='gallery' className='py-24 gradient-green-dark'>
       <div className='container mx-auto px-6 text-center'>
-        <h2 className='text-3xl md:text-5xl font-bold gradient-text mb-16 animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
+        <h2 className='text-3xl md:text-5xl font-bold gradient-text mb-7 animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
           Gallery
         </h2>
+        <img
+          src='/assets/elegant-design.svg'
+          alt='elegant design'
+          className='mx-auto mt-0 e-design-center'
+        />
         <div className='grid grid-cols-2 md:grid-cols-3 gap-6 mb-20'>
           {galleryImages.map((src, index) => (
             <div
@@ -649,6 +675,144 @@ const Gallery: React.FC = () => {
         <h3 className='text-2xl md:text-4xl font-bold text-white mb-10 gradient-text animate-fadeInUp leading-[1.3] md:leading-[52px] pb-2'>
           Event Reels
         </h3>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20'>
+          {reels.map((reel, index) => (
+            <div
+              key={index}
+              className='overflow-hidden rounded-2xl shadow-premium hover:shadow-gold transition-all duration-500 animate-scaleIn border-gradient'
+              style={{ animationDelay: `${0.1 * index}s` }}
+            >
+              <video
+                src={reel.src}
+                controls
+                muted
+                autoPlay
+                loop
+                className='w-full h-full object-cover'
+                // poster='/assets/gallery-images/about-catering-setup.jpg' // Optional poster image
+              >
+                Your browser does not support the video tag.
+              </video>
+              <div className='p-4 bg-gradient-to-br from-[#003515] to-[#001a08]'>
+                <h4 className='text-lg font-bold gradient-text'>
+                  {reel.title}
+                </h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const Faqs: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  const faqs = [
+    {
+      question: "What types of events do you cater?",
+      answer:
+        "Golden Trees Caterers serves all kinds of occasions including weddings, nikkah, mehendi, birthdays, BBQs, corporate dinners, and family gatherings. No matter the size, we handle every event with care and perfection.",
+    },
+    {
+      question: "How far in advance should I book?",
+      answer:
+        "We recommend booking at least 10–15 days before your event. For large weddings or corporate functions, 3–4 weeks in advance helps us ensure everything runs seamlessly.",
+    },
+    {
+      question: "Do you offer custom menu options?",
+      answer:
+        "Yes, Golden Trees Caterers designs personalized menus based on your taste, theme, and cultural preferences. Every dish is crafted to reflect your unique event style.",
+    },
+    {
+      question: "Is delivery included in the service?",
+      answer:
+        "Yes, delivery across Karachi is part of our catering service. Our team ensures your food arrives fresh, warm, and perfectly timed.",
+    },
+    {
+      question: "Can you accommodate dietary restrictions?",
+      answer:
+        "Of course, we handle vegetarian, vegan, gluten-free, and other dietary requests with great care. Golden Trees Caterers makes sure every guest enjoys a satisfying meal.",
+    },
+    {
+      question: "What is your cancellation policy?",
+      answer:
+        "Cancellations made at least 72 hours before the event are eligible for partial refund or future credit. Our team will guide you through the best possible option based on your situation.",
+    },
+    {
+      question: "Do you provide decoration and event management too?",
+      answer:
+        "Yes, Golden Trees Caterers offers complete event setups including décor, lighting, seating, and on-site coordination. We make sure your event looks and feels exceptional.",
+    },
+    {
+      question: "Can I plan and pay for an event from overseas?",
+      answer:
+        "Absolutely, our Overseas Celebration Service is made for clients living abroad. You can book, pay, and coordinate your event online while we manage everything in Karachi with live updates.",
+    },
+  ]
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
+
+  return (
+    <section id='faqs' className='py-24 bg-[#002a08]'>
+      <div className='container mx-auto px-6 text-center'>
+        <h2 className='text-3xl md:text-5xl font-bold gradient-text mb-6 animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
+          Frequently Asked Questions
+        </h2>
+        <img
+          src='/assets/elegant-design.svg'
+          alt='elegant design'
+          className='mx-auto mt-4 e-design-center'
+        />
+        <div className='max-w-4xl mx-auto mt-16 space-y-4'>
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className='bg-gradient-to-br from-[#003515] to-[#001a08] rounded-2xl shadow-premium border-2 border-[#f6bb1d]/30 hover:border-[#f6bb1d] transition-all duration-300 animate-fadeInUp overflow-hidden'
+              style={{ animationDelay: `${0.1 * index}s` }}
+            >
+              <button
+                onClick={() => toggleFaq(index)}
+                className='w-full text-left p-8 focus:outline-none focus:ring-2 focus:ring-[#f6bb1d] rounded-2xl'
+              >
+                <div className='flex justify-between items-center'>
+                  <h3 className='text-xl md:text-2xl font-bold gradient-text leading-[1.3] pb-2'>
+                    {faq.question}
+                  </h3>
+                  <svg
+                    className={`w-6 h-6 text-[#f6bb1d] transition-transform duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
+                      d='M19 9l-7 7-7-7'
+                    />
+                  </svg>
+                </div>
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  openIndex === index
+                    ? "max-h-96 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <p className='text-gray-200 leading-relaxed text-left px-8 pb-8'>
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -772,6 +936,11 @@ const BookingForm: React.FC = () => {
           <h2 className='text-3xl md:text-5xl font-bold text-white mb-6 gradient-text animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
             Book Your Event with Golden Trees Caterers
           </h2>
+          <img
+            src='/assets/elegant-design.svg'
+            alt='elegant design'
+            className='mx-auto mt-0 e-design-center'
+          />
           <p className='text-gray-300 text-lg animate-fadeIn'>
             Planning your event begins with one conversation. Fill out the
             booking form below and our team will contact you to discuss your
@@ -916,6 +1085,11 @@ const Contact: React.FC = () => (
       <h2 className='text-3xl md:text-5xl font-bold gradient-text mb-6 animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
         Get in Touch
       </h2>
+      <img
+        src='/assets/elegant-design.svg'
+        alt='elegant design'
+        className='mx-auto mt-4 e-design-center'
+      />
       <p className='max-w-3xl mx-auto text-gray-200 text-lg mb-12 animate-fadeIn'>
         We'd love to hear from you. Reach out to us for bookings, inquiries, or
         just to say hello.
@@ -1135,6 +1309,7 @@ function App() {
       <Services />
       <WhyChooseUs />
       <Gallery />
+      <Faqs />
       <BookingForm />
       <Contact />
       <Footer />

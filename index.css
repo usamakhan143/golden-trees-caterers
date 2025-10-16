@@ -249,3 +249,48 @@ html {
   background: #f6bb1d;
   color: #000;
 }
+
+/* 🌐 Desktop (large screens) */
+@media (min-width: 1025px) {
+  .e-design {
+    margin-top: -70px !important;
+    width: 80%;
+    margin-bottom: -30px !important;
+  }
+
+  .e-design-center {
+    margin-top: -70px !important;
+    margin-bottom: -40px !important;
+    width: 40%;
+  }
+}
+
+/* 💻 Tablet (portrait & landscape) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .e-design {
+    margin-top: -40px !important;
+    width: 90%;
+    margin-bottom: -20px !important;
+  }
+
+  .e-design-center {
+    margin-top: -40px !important;
+    margin-bottom: -30px !important;
+    width: 60%;
+  }
+}
+
+/* 📱 Mobile devices */
+@media (max-width: 767px) {
+  .e-design {
+    margin-top: -50px !important;
+    width: 100%;
+    margin-bottom: -20px !important;
+  }
+
+  .e-design-center {
+    margin-top: -50px !important;
+    margin-bottom: -20px !important;
+    width: 80%;
+  }
+}
