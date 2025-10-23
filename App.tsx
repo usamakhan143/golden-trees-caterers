@@ -776,10 +776,13 @@ const Faqs: React.FC = () => {
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className='w-full text-left p-8 focus:outline-none focus:ring-2 focus:ring-[#f6bb1d] rounded-2xl'
+                className='w-full text-left p-4 focus:outline-none focus:ring-2 focus:ring-[#f6bb1d] rounded-2xl'
               >
                 <div className='flex justify-between items-center'>
-                  <h3 className='text-xl md:text-2xl font-bold gradient-text leading-[1.3] pb-2'>
+                  <h3
+                    className='text-lg md:text-xl font-bold gradient-text leading-[1.3]'
+                    style={{ fontFamily: "Open Sans, sans-serif" }}
+                  >
                     {faq.question}
                   </h3>
                   <svg
@@ -806,7 +809,7 @@ const Faqs: React.FC = () => {
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <p className='text-gray-200 leading-relaxed text-left px-8 pb-8'>
+                <p className='text-gray-200 leading-relaxed text-left px-8 pb-8 pt-8'>
                   {faq.answer}
                 </p>
               </div>
