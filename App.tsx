@@ -288,6 +288,7 @@ const Topbar: React.FC = () => (
 
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -296,6 +297,14 @@ const Header: React.FC = () => {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
 
   return (
     <>
@@ -325,13 +334,59 @@ const Header: React.FC = () => {
               ),
             )}
           </nav>
-          <a
-            href='#booking'
-            className='bg-gradient-gold text-[#f6bb1d] font-extrabold py-3 px-8 rounded-full shadow-gold hover:shadow-premium transition-all duration-300 transform hover:scale-105 animate-scaleIn border-2 border-[#f6bb1d]'
-          >
-            Book Now
-          </a>
+          <div className='flex items-center space-x-4'>
+            <button
+              onClick={toggleMenu}
+              className='md:hidden text-white hover:text-[#f6bb1d] transition-colors duration-300'
+            >
+              <svg
+                className='w-8 h-8'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M4 6h16M4 12h16M4 18h16'
+                />
+              </svg>
+            </button>
+            <a
+              href='#booking'
+              className='bg-gradient-gold text-[#f6bb1d] font-extrabold py-3 px-8 rounded-full shadow-gold hover:shadow-premium transition-all duration-300 transform hover:scale-105 animate-scaleIn border-2 border-[#f6bb1d]'
+            >
+              Book Now
+            </a>
+          </div>
         </div>
+        {isMenuOpen && (
+          <div className='md:hidden absolute top-full left-0 right-0 bg-[#002a08] glass shadow-premium border-t border-[#f6bb1d]/30'>
+            <nav className='container mx-auto px-6 py-6'>
+              <div className='flex flex-col space-y-4'>
+                {[
+                  "Home",
+                  "About",
+                  "Services",
+                  "Gallery",
+                  "Testimonials",
+                  "FAQs",
+                  "Contact",
+                ].map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={closeMenu}
+                    className='text-white hover:text-[#f6bb1d] transition-colors duration-300 font-lora text-lg py-2'
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
     </>
   )
