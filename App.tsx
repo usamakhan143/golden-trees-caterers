@@ -706,6 +706,143 @@ const Gallery: React.FC = () => {
   )
 }
 
+const Testimonials: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const testimonials = [
+    {
+      name: "Ahmed Khan",
+      text: "Golden Trees Caterers made our wedding unforgettable. The food was exquisite, and the service was impeccable. Highly recommend!",
+      rating: 5,
+    },
+    {
+      name: "Sara Ali",
+      text: "From overseas, we planned our family gathering through them. Everything was perfect, and the live updates kept us connected. Amazing experience!",
+      rating: 5,
+    },
+    {
+      name: "Bilal Ahmed",
+      text: "Their BBQ setup for our corporate event was outstanding. Fresh ingredients and professional staff. Will book again!",
+      rating: 5,
+    },
+    {
+      name: "Fatima Noor",
+      text: "The attention to detail in our mehndi event was incredible. Every dish reflected our cultural preferences. Thank you!",
+      rating: 5,
+    },
+    {
+      name: "Omar Sheikh",
+      text: "Reliable and elegant service for our anniversary. The presentation was luxurious, and the taste was divine.",
+      rating: 5,
+    },
+    {
+      name: "Ayesha Malik",
+      text: "Overseas client here – they handled our Eid celebration flawlessly. The $75 registration was worth every penny!",
+      rating: 5,
+    },
+  ]
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % 2)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + 2) % 2)
+  }
+
+  const currentTestimonials = testimonials.slice(
+    currentSlide * 3,
+    (currentSlide + 1) * 3,
+  )
+
+  return (
+    <section id='testimonials' className='py-24 bg-[#002a08]'>
+      <div className='container mx-auto px-6 text-center'>
+        <h2 className='text-3xl md:text-5xl font-bold gradient-text mb-6 animate-fadeInUp leading-[1.3] md:leading-[78px] pb-2'>
+          What Our Clients Say
+        </h2>
+        <img
+          src='/assets/elegant-design.svg'
+          alt='elegant design'
+          className='mx-auto mt-4 e-design-center'
+        />
+        <p className='max-w-4xl mx-auto text-gray-300 text-lg mb-16 animate-fadeIn'>
+          Don't just take our word for it. Here's what our satisfied clients
+          have to say about their experiences with Golden Trees Caterers.
+        </p>
+        <div className='relative'>
+          <div className='grid md:grid-cols-3 gap-8'>
+            {currentTestimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className='bg-gradient-to-br from-[#003515] to-[#001a08] p-8 rounded-2xl shadow-premium border-2 border-[#f6bb1d]/30 hover:border-[#f6bb1d] hover-lift animate-scaleIn'
+                style={{ animationDelay: `${0.1 * index}s` }}
+              >
+                <div className='flex justify-center mb-4'>
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className='w-5 h-5 text-[#f6bb1d]'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
+                    </svg>
+                  ))}
+                </div>
+                <p className='text-gray-200 leading-relaxed mb-6 italic'>
+                  "{testimonial.text}"
+                </p>
+                <h4 className='text-lg font-bold gradient-text'>
+                  {testimonial.name}
+                </h4>
+              </div>
+            ))}
+          </div>
+          <div className='flex justify-center mt-8 space-x-4'>
+            <button
+              onClick={prevSlide}
+              className='bg-[#f6bb1d] text-black p-3 rounded-full hover:bg-[#ffd700] transition-colors duration-300'
+            >
+              <svg
+                className='w-6 h-6'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M15 19l-7-7 7-7'
+                />
+              </svg>
+            </button>
+            <button
+              onClick={nextSlide}
+              className='bg-[#f6bb1d] text-black p-3 rounded-full hover:bg-[#ffd700] transition-colors duration-300'
+            >
+              <svg
+                className='w-6 h-6'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M9 5l7 7-7 7'
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 const Faqs: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
@@ -1312,6 +1449,7 @@ function App() {
       <Services />
       <WhyChooseUs />
       <Gallery />
+      <Testimonials />
       <Faqs />
       <BookingForm />
       <Contact />
